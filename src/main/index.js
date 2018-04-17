@@ -12,7 +12,9 @@ let mainWindow
 function createMainWindow() {
   const window = new BrowserWindow()
 
-  window.webContents.openDevTools()
+  if (isDevelopment) {
+    window.webContents.openDevTools()
+  }
   window.loadURL(formatUrl({
       pathname: path.resolve(__static, 'index.html'),
       protocol: 'file',
